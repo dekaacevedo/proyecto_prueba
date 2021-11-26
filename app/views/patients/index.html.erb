@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <h3 class="text-center mt-3">Pacientes ingresados</h3>
+  <div class="d-flex justify-content-end">
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class="bg-info">
+        <tr>
+          <th scope="col" class="bold text-center" style="color: #fff;">Nombre</th>
+          <th scope="col" class="bold text-center" style="color: #fff;">Apellidos</th>
+          <th scope="col" class="bold text-center" style="color: #fff;">Teléfono</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @patients.order(:name).each do |patient| %>
+          <tr>
+            <td class="text-center"><%= patient.name %></td>
+            <td class="text-center"><%= patient.last_name %></td>
+            <td class="text-center"><%= patient.phone %></td>
+            <td class="text-center">
+            <%= link_to edit_patient_path(patient) do %>
+              <i class="fas fa-pen danger"></i>
+            <% end %>
+            <%= link_to patient_path(patient), method: :delete, data: { confirm: "Estás seguro?" } do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+                </td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<%= simple_form_for @patient do |f| %>
+      <div class=" form-inputs">
+        <%= f.input :name, label: "Nombre", error: "Nombre no puede quedar en blanco" %>
+        <%= f.input :last_name, label: "Apellidos", error: "Apellidos no puede quedar en blanco"  %>
+        <%= f.input :phone, label: "Teléfono", error: "Teléfono inválido", hint: "Debes escribir 9 dígitos"%>
+      </div>
+      <p>* Es necesario que lo completes</p>
+      <div class="dropdown-divider"></div>
+      <div class="text-center mb-5">
+        <%= f.button :submit, "Guardar", class: "btn btn-primary" %>
+      </div>
+    <% end %>

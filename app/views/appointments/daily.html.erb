@@ -1,0 +1,12 @@
+<h1>PROBANDO</h1>
+
+<% @appointments.each do |appointment| %>
+  <%= appointment.patient.name %>
+  <%= appointment.date %>
+  <%= appointment.time.strftime("%H:%M") %>
+  <br/>
+  <p>Doctor(a)</p>
+  <%= appointment.user.name + " " + appointment.user.last_name %>
+  <br/>
+  <br/>
+<% end %>

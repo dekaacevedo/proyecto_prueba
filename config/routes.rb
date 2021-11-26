@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'appointments#daily'
+
+  # Nesting Appointments to Users, without duplicating users routes
+  resources :users, only: [] do
+    resources :appointments, only: %i[index new create edit update destroy]
+    get 'daily', to: 'appointments#daily'
+  end
+
+  resources :patients
+
 end
